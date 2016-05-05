@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#zzgitsearch  commit_NO  [branch]
+#zzgitsearch  "Log info"  [branch]
+
+args=$*
+
+option=1
+key_arg=2
+if [ ${args:0:1} = "-" ]; then
+    branch_arg=3
+else
+    branch_arg=2
+    option=11
+    key_arg=1
+fi
+
+#echo -e "\033[ git gl ${!branch_arg}  | grep "${!key_arg}" \033[0m"
+
+git log --format="%Cgreen%H %Cred[%cd] %Creset<%cn> %Creset  %Cgreen%s  %Creset"  ${!branch_arg} | grep "${!key_arg}"

@@ -1,0 +1,23 @@
+[user]
+	name = 改成你自己的名字
+	email = 改成你自己的邮箱
+[core]
+	editor = vim
+	autocrlf = input
+[color]
+	ui = auto
+[alias]
+	gl = log --format=\"%Cgreen%h %Cred[%cd] %Creset<%cn> %Creset  %Cgreen%s  %Creset \"
+	gl2 = log --format=\"%Cgreen%h %Cred[%ci] %Creset<%cn> %Creset  %Cgreen%s  %Creset \"
+	gll = log --format=\"%Cgreen%h %Cred[%ad] %Creset<%an> %Creset  %Cgreen%s  %Creset \"
+	glt = log --format=\"%h [%cd] <%cn> %s \"
+	glc = log --format=\"%Cgreen%h %Cred[%cd] %Creset<committer:%cn> : %Cred[%ad]  %Creset<author:%an>   %Creset \"
+	glc2 = log --format=\"%Cgreen%h %Cred[%ci] %Creset<committer:%cn> : %Cred[%ai]  %Creset<author:%an>  %Creset \"
+	glc3 = log --format=\"%Cgreen%h %Cred[%ci] %Creset<committer:%cn> : %Cred[%ai]  %Creset<author:%an>   %n        %Cgreen%s   %Creset \"
+	st = status -uno -s
+	st2 = status -s
+	co = checkout
+	bl = blame --date=short
+
+[log]
+	date = short

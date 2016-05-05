@@ -1,0 +1,9 @@
+#!/bin/sh
+num=$1
+if [ "$num"x == ""x ];then
+    num=5
+fi
+
+git log --author=luojie -n $num|grep -o "\[.*\|commit"|sed 's/commit//g'
+echo ""
+echo "======== the latest commit ======"

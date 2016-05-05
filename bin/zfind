@@ -1,0 +1,12 @@
+#!/bin/bash
+args=$*
+
+reg=2
+if [ ${args:0:1} = "-" ]; then
+    path_arg=3
+else
+    path_arg=2
+    reg=1
+fi
+echo -e  "\033[36mfind ${!path_arg} -iname "${!reg}" \033[0m"
+find ${!path_arg} -iname "${!reg}"

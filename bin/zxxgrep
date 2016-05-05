@@ -1,0 +1,55 @@
+#!/bin/bash
+
+#zxxgrep -k xxx [-f xxx] [-p xxx]  [-w]
+#-k set keyword  
+#-f set file type default all file
+#-p set path,   default currect
+#-w only match keyword
+#zxxgrep -k chenming -f '*.ini' -p Supernova -w  Supernova '*.ini' file find only match "chenming" line
+
+args=$*
+
+ZZ_FILE="*"
+ZZ_PATH="."
+ZZ_KEY=""
+ZZ_OPTW=""
+echo "==args = $args ===="
+
+while getopts :f:p:k:w:z OPT
+do
+    echo "==  $OPT  =="
+    echo "==  $OPTARG  =="
+    case $OPT in
+       f)  ZZ_FILE="$OPTARG";;
+       p)  ZZ_PATH="$OPTARG";;
+       k)  ZZ_KEY="$OPTARG";;
+       w)  ZZ_OPTW="-w";;
+       \?) echo "无效的选项! $OPT"
+           exit 0 ;; 
+    esac
+
+done
+
+#echo "=ZZ_FILE==$ZZ_FILE==="
+#echo "=ZZ_PATH==$ZZ_PATH==="
+echo "=ZZ_KEY==$ZZ_KEY==="
+
+if [ ""x == "$ZZ_KEY"x ] ; then 
+    echo "====not set the key===="
+    exit 0
+fi
+
+echo -e "\033[36mfind $ZZ_PATH -iname $ZZ_FILE | xargs grep --color -n $ZZ_OPTW "$ZZ_KEY" \033[0m"
+find $ZZ_PATH -iname "$ZZ_FILE" | xargs grep --color -n $ZZ_OPTW "$ZZ_KEY"
+
+#option=1
+#reg=2
+#if [ ${args:0:1} = "-" ]; then
+#   path_arg=3
+#else
+#   path_arg=2
+#   option=11
+#   reg=1
+#fi
+#echo -e "\033[36mfind ${!path_arg} -iname \"*.ini\" | xargs grep --color -n ${!option} "${!reg}""
+#find ${!path_arg} -iname "*.ini" | xargs grep --color -n ${!option} "${!reg}"
